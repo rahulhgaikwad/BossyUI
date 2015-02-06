@@ -1,3 +1,7 @@
+@import "../core/extends";
+@import "../core/vars";
+@import "../core/grid";
+
 .bossy-input {
 	input{
 		border: 0;
@@ -92,21 +96,191 @@ bossy-form{
 	}
 }
 
-bossy-calendar {
-	.p {
+// .bossy-calendar {
+// 	width: 100%;
+
+// 	.p {
+// 		cursor: pointer;
+// 	}
+
+// 	td {
+// 		padding: 4px;
+// 		text-align: center;
+// 	}
+// 	.day-in-month {
+// 		font-weight: 700;
+// 	}
+// 	.disabled-day {
+// 		color: #ccc;
+// 	}
+// }
+
+%clearfix:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+@import "../partials/calendar";
+
+button {
+	background: transparent;
+	border: none;
+	padding: 0;
+	line-height: inherit;
+	outline: none;
+
+	&:hover {
 		cursor: pointer;
 	}
-	table {
-		min-width: 214px;
+
+	&:focus {
+		outline: none;
 	}
-	td {
-		padding: 4px;
-		text-align: center;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	color: rgba(20, 20, 20, 1);
+	font-size: 87.5%;
+	font-weight: normal;
+	line-height: 1.5em;
+	font-family: Helvetica-Neue, Helvetica, sans-serif;
+}
+
+p {
+	margin: 0;
+	+ p {
+		margin-top: 1em;
 	}
-	.day-in-month {
-		font-weight: 700;
+}
+
+nav > ul {
+	@extend %unstyle;
+}
+
+bossy-calendar {
+	display: block;
+	> table {
+		border-collapse: collapse;
+		table-layout: fixed;
+		width: 100%;
+
+		tbody span {
+			&:before {
+				content: attr(data-abbr);
+			}
+		}
+
+		tr {
+			vertical-align: middle;
+		}
+
+		td {
+			text-align: center;
+			padding: 0;
+		}
 	}
-	.disabled-day {
-		color: #ccc;
+}
+
+.bossy-calendar-days-day {
+	font-size: 1rem;
+	letter-spacing: .2em;
+	text-transform: uppercase;
+}
+
+.bossy-calendar {
+	color: lightgray;
+	font-size: 1rem;
+}
+
+.bossy-calendar-previous {
+	button{
+		width: 1em;
+		height: 2em;
+		position: relative;
+		&:before {
+			content: "<";
+			display: block;
+			color: blue;
+			position: absolute;
+			top: 0;
+			right: 0;
+			transition: all .5s;
+		}
+		&:hover:before {
+			right: 100%;
+		}
+	}
+}
+
+.bossy-calendar-next {
+
+	button{
+		position: relative;
+		width: 1em;
+		height: 2em;
+		&:before {
+			content: ">";
+			display: block;
+			color: blue;
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition: all .5s;
+		}
+		&:hover:before {
+			left: 100%;
+		}
+	}
+}
+
+.bossy-calendar-day {
+
+	> button {
+		color: lightgray;
+		font-size: 1rem;
+	}
+
+	&.day-in-month > button {
+		color: gray;
+	}
+
+	> button {
+		width: 3em;
+		height: 3em;
+		line-height: 3em;
+		position: relative;
+
+		&:before {
+			content: "";
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			width: 0;
+			height: 0;
+			background-color: #33B2FF;
+			margin-left: 0;
+			margin-top: 0;
+			box-shadow: 0 0 1px #33B2FF;
+			border-radius: 1.5em;
+			z-index: -1;
+		}
+		&:hover {
+			color: #33B2FF;
+			&:before {
+				transition: all .5s;
+				width: 3em;
+				height: 3em;
+				margin-left: -1.5em;
+				margin-top: -1.5em;
+				background-color: transparent;
+				box-shadow: 0 0 1px transparent;
+			}
+		}
 	}
 }

@@ -1,0 +1,52 @@
+
+// .bossy {
+
+// 	&-calendar {
+// 		width: 100%;
+
+// 		tr  {
+// 			display: block;
+// 			+ tr {
+// 			margin-top: .5em;
+// 			}
+// 		}
+
+// 		&-head, &-days {
+// 			@extend %clearfix;
+// 		}
+
+// 		&-days-day {
+// 			display: block;
+// 			float: left;
+// 			width: percentage(1/7);
+// 			text-align: center;
+// 		}
+
+// 		&-week {
+
+// 		}
+
+// 		&-day {
+// 			float: left;
+// 			width: 100%;
+// 			max-width: percentage(1/7);
+// 			line-height: 3em;
+// 			text-align: center;
+
+// 			span {
+// 				display: block;
+// 				width: 3em;
+// 				height: 3em;
+// 				margin: 0 auto;
+// 				text-align: center;
+// 				border-radius: 9999em;
+// 				margin-top: -.25em;
+// 				margin-bottom: -.25em;
+// 				&:hover {
+// 					background-color: red;
+// 					color: #fff;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
