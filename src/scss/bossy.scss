@@ -196,6 +196,9 @@ bossy-calendar {
 .bossy-calendar {
 	color: lightgray;
 	font-size: 1rem;
+	background-image: url(../graphics/sketch.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .bossy-calendar-previous {
@@ -268,7 +271,7 @@ bossy-calendar {
 			margin-top: 0;
 			box-shadow: 0 0 1px #33B2FF;
 			border-radius: 1.5em;
-			z-index: -1;
+			z-index: 0;
 		}
 		&:hover {
 			color: #33B2FF;

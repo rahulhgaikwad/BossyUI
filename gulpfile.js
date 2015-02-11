@@ -19,6 +19,7 @@ gulp.task('build-sandbox', 'Runs build and adds BossyUI libs to Sandbox', functi
 		'sandbox-copy-js',
 		'sandbox-copy-css',
 		'sandbox-copy-templates',
+		'sandbox-copy-graphics',
 		callback);
 });
 
@@ -47,6 +48,12 @@ gulp.task('sandbox-copy-css', false, function() {
 	return gulp
 		.src(['dist/css/bossy.css'])
 		.pipe(gulp.dest('sites/sandbox/css'));
+});
+
+gulp.task('sandbox-copy-graphics', false, function() {
+	return gulp
+		.src(['src/graphics/*.svg'])
+		.pipe(gulp.dest('sites/sandbox/graphics'));
 });
 
 gulp.task('build-js', 'Runs build for all lib Javascript', function() {

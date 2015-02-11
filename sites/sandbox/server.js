@@ -18,6 +18,9 @@ http.createServer(function (req, res) {
 		case '.css':
 			contentType = 'text/css';
 			break;
+		case '.svg':
+			contentType = 'image/svg+xml';
+			break;
 	}
 
 	fs.exists(filePath, function(exists) {
