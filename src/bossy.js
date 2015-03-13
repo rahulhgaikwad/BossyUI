@@ -21,6 +21,7 @@ var bossy = angular.module('bossy', [
 		'bossy.numerictextbox',
 		'bossy.schema',
 		'bossy.tooltip',
-		'bossy.datagrid'
+		'bossy.datagrid',
+		'bossy.menu'
 	]
 );

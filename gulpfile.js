@@ -71,7 +71,7 @@ gulp.task('build-sass', 'Runs build for all lib Sass/Css', function() {
 	return gulp
 		.src(config.paths.scss.src)
 		.pipe(compass({
-			style: 'compressed',
+			style: 'nested',
 			sass: 'src/scss',
 			css: config.paths.css.dist
 		}));

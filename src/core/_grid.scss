@@ -1,82 +1,140 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	color: rgba(20, 20, 20, 1);
+	font-size: 87.5%;
+	font-weight: normal;
+	line-height: $t-leading;
+	font-family: Helvetica-Neue, Helvetica, sans-serif;
+}
+
+p {
+	margin: 0;
+	+ p {
+		margin-top: 1em;
+	}
+}
+
+nav > ul {
+	@extend %unstyle;
+}
+
 * {
 	box-sizing: border-box;
 }
 
 .container {
-	max-width: 960px;
+	max-width: $max-width;
 	margin: 0 auto;
 }
 
-[class*="grid"] {
+.module {
+	background: gray;
+}
+
+[class*="grid-"], [class*="desktop-"], [class*="mobile-"] {
+	line-height: 0;
+	font-size: 0;
 	@extend %clearfix;
-	@media screen and (max-width: 480px) {
-		> * + * {
-			margin-top: $margin;
-		}
-	}
-}
-
-* + [class*="grid"] {
-	margin-top: $margin;
-}
-
-[class*="grid"] {
-	@extend %unstyle;
-}
-
-.grid {
-
 	margin-left: -$gutter;
+
 	> * {
+		display: inline-block;
+		font-size: $t-size;
+		float: none;
+		line-height: $t-leading;
 		padding-left: $gutter;
+		text-indent: 0;
+		vertical-align: top;
 	}
 
-	@for $i from 0 through 50 {
-		&[data-gutter="#{$i}"] {
-			margin-left: -#{$i}px;
-			> * {
-				padding-left: #{$i}px
-			}
+	&.inline {
+		white-space: nowrap;
+		overflow: auto;
+		margin-left: 0;
+		text-indent: -$gutter;
+		> * {
+			white-space: normal;
 		}
 	}
 
-	@media screen and (min-width: 480px) {
-		@for $i from 2 through 12 {
-			&-#{$i} {
-				margin-left: -$gutter;
-				> * {
-					margin-bottom: $margin;
-					float: left;
-					padding-left: $gutter;
-					width: 100%;
-					max-width: percentage(1/$i)
-				}
-			}
+	&.flush {
+		text-indent: 0;
+		margin-left: 0;
+		> * {
+			padding-left: 0;
 		}
 	}
-}
 
-.grid--pad {
-	@extend .grid;
-	padding: $pad;
-}
-
-[class^="col-"] {
-	float: left;
-	width: 100%;
-	@media screen and (max-width: 480px) {
-		+ [class*="col-"] {
-			margin-top: $margin;
+	&.rows {
+		margin-bottom: -$gutter;
+		> * {
+			padding-bottom: $gutter;
 		}
 	}
 }
 
-@media screen and (min-width: 480px) {
-	@for $i from 1 to 12 {
-		@for $j from 1 to $i {
-			.col-#{$j}-#{$i} {
+@for $i from 1 through 12 {
+	.grid-#{$i} {
+		> * {
+			width: percentage(1/$i);
+		}
+
+		> [class*="col-"] {
+			width: 100%;
+		}
+
+		@for $j from 1 through $i {
+			.col-#{$j} {
 				width: percentage($j/$i);
 			}
 		}
 	}
+}
+
+
+
+@for $i from 1 through 12 {
+@media (min-width: 480px) {
+	.tablet-#{$i} {
+		> * {
+			width: percentage(1/$i);
+		}
+
+		> [class*="col-"] {
+			width: 100%;
+		}
+
+		@for $j from 1 through $i {
+			.col-#{$j} {
+				width: percentage($j/$i);
+			}
+		}
+	}
+}
+}
+
+@media (min-width: 720px) {
+
+@for $i from 1 through 12 {
+	.desktop-#{$i} {
+		> * {
+			width: percentage(1/$i);
+		}
+
+		> [class*="col-"] {
+			width: 100%;
+		}
+
+		@for $j from 1 through $i {
+			.col-#{$j} {
+				width: percentage($j/$i);
+			}
+		}
+	}
+}
+
 }
