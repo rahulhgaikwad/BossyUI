@@ -6,3 +6,13 @@ $max-width: 1024px;
 
 $t-size: 1rem;
 $t-leading: 1.4rem;
+
+
+$gutter: 1em !default;
+$columns: 12 !default;
+$tablet: 768px !default;
+$desktop: 1024px !default;
+
+$site-max-width: $desktop !default;
+
+$breakpoints: (grid: 0, tablet: $tablet, desktop: $desktop) !default;

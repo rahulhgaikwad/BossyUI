@@ -38,3 +38,10 @@
   background-color: rgba(black, 0.6);
   color: #fff;
 }
+
+
+@mixin media-query($device) {
+    @media only screen and (min-device-width: $device) {
+        @content;
+    }
+}

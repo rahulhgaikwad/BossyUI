@@ -263,3 +263,84 @@ bossy-calendar {
 		}
 	}
 }
+
+// The Bossy grid
+.container {
+	margin: 0 auto;
+	max-width: $site-max-width;
+}
+
+
+.col {
+	float: left;
+	margin: 0;
+	margin-left: $gutter;
+	padding: 0;
+	&[class*="col--"] {
+		width: auto;
+		width: -webkit-calc((100%) - #{$gutter});
+		width:         calc((100%) - #{$gutter});
+	}
+}
+
+// Root Grid
+@each $name, $breakpoint in $breakpoints {
+	@include media-query($breakpoint) {
+		@for $i from 1 through $columns {
+			.#{$name}--#{$i} {
+				> .col {
+					width: percentage(1/$i);
+					@for $j from 1 through $i {
+					&.col--#{$j} {
+							width: percentage($j/$i);
+							width: -webkit-calc((100% * #{$j}/#{$i}) - #{$gutter});
+							width:         calc((100% * #{$j}/#{$i}) - #{$gutter});
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+[class*="grid--"] {
+	list-style: none;
+	margin: 0;
+	margin-left: -$gutter;
+	padding: 0;
+	@extend %clearfix;
+
+	&.flush {
+		margin-left: 0;
+		.col {
+			margin-left: 0 !important;
+		}
+	}
+
+	&.rows {
+		.col {
+			margin-bottom: $gutter;
+		}
+	}
+
+	&.inline {
+		white-space: nowrap;
+		font-size: 0;
+		margin-left: 0;
+		overflow-x: auto;
+
+		@media (max-device-width: 960px) {
+			overflow-x: scroll; /* has to be scroll, not auto */
+  		-webkit-overflow-scrolling: touch;
+  	}
+
+		.col {
+			display: inline-block;
+			float: none;
+			font-size: 1rem;
+			&:first-of-type {
+				margin-left: 0;
+			}
+		}
+	}
+}
